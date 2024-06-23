@@ -238,6 +238,9 @@ Future<SendPort> _helperIsolateSendPort = () async {
                 zipIpa,
                 showLog);
             String resultString = result.toDartString();
+            if (resultString != null) {
+              throw Exception(resultString);
+            }
             malloc.free(result);
             final _SignResponse response = _SignResponse(data.id, resultString);
             sendPort.send(response);

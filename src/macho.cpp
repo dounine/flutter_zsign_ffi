@@ -183,7 +183,7 @@ bool ZMachO::ReallocCodeSignSpace() {
             return false;
         }
 
-        uint32_t uFatHeaderSize = sizeof(fat_header) + arrArches.size() * sizeof(fat_arch);
+        uint32_t uFatHeaderSize = sizeof(fat_header) + (int)arrArches.size() * sizeof(fat_arch);
         uint32_t uPadding1 = (uAlign - uFatHeaderSize % uAlign);
         uint32_t uOffset = uFatHeaderSize + uPadding1;
         for (size_t i = 0; i < arrArches.size(); i++) {

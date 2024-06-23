@@ -501,9 +501,9 @@ bool SlotBuildCodeDirectory(bool bAlternate,
         uHeaderLength += sizeof(cdHeader.execSegFlags);
     }
 
-    uint32_t uBundleIDLength = strBundleId.size() + 1;
-    uint32_t uTeamIDLength = strTeamId.size() + 1;
-    uint32_t uSpecialSlotsLength = arrSpecialSlots.size() * cdHeader.hashSize;
+    uint32_t uBundleIDLength = (int)strBundleId.size() + 1;
+    uint32_t uTeamIDLength = (int)strTeamId.size() + 1;
+    uint32_t uSpecialSlotsLength = (int)arrSpecialSlots.size() * cdHeader.hashSize;
     uint32_t uCodeSlotsLength = uCodeSlots * cdHeader.hashSize;
 
     uint32_t uSlotLength = uHeaderLength + uBundleIDLength + uSpecialSlotsLength + uCodeSlotsLength;

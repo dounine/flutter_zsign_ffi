@@ -75,7 +75,7 @@ bool ZArchO::Init(uint8_t *pBase, uint32_t uLength) {
                                 m_uLoadCommandsFreeSpace = BO(sect->offset) - BO(m_pHeader->sizeofcmds) - m_uHeaderSize;
                             }
                         } else if (0 == strcmp("__info_plist", sect->sectname)) {
-                            m_strInfoPlist.append((const char *) m_pBase + BO(sect->offset), BO(sect->size));
+                            m_strInfoPlist.append((const char *) m_pBase + BO(sect->offset), BO((int)sect->size));
                         }
                     }
                 } else if (0 == strcmp("__LINKEDIT", seglc->segname)) {
@@ -539,10 +539,10 @@ uint32_t ZArchO::ReallocCodeSignSpace(const string &strNewFile) {
             break;
         case LC_SEGMENT_64: {
             auto *seglc = (segment_command_64 *) m_pLinkEditSegment;
-            seglc->vmsize = ByteAlign(BO(seglc->vmsize) + (uNewLength - m_uLength), 4096);
-            seglc->vmsize = BO(seglc->vmsize);
-            seglc->filesize = uNewLength - BO(seglc->fileoff);
-            seglc->filesize = BO(seglc->filesize);
+            seglc->vmsize = ByteAlign(BO((int)seglc->vmsize) + (uNewLength - m_uLength), 4096);
+            seglc->vmsize = BO((int)seglc->vmsize);
+            seglc->filesize = uNewLength - BO((int)seglc->fileoff);
+            seglc->filesize = BO((int)seglc->filesize);
         }
             break;
     }
@@ -639,7 +639,7 @@ bool ZArchO::InjectDyLib(bool bWeakInject, const char *szDyLibPath, bool &bCreat
         pLoadCommand += BO(plc->cmdsize);
     }
 
-    uint32_t uDylibPathLength = strlen(szDyLibPath);
+    uint32_t uDylibPathLength = (int)strlen(szDyLibPath);
     uint32_t uDylibPathPadding = (8 - uDylibPathLength % 8);
     uint32_t uDyLibCommandSize = sizeof(dylib_command) + uDylibPathLength + uDylibPathPadding;
     if (m_uLoadCommandsFreeSpace > 0 && m_uLoadCommandsFreeSpace < uDyLibCommandSize) // some bin doesn't have '__text'

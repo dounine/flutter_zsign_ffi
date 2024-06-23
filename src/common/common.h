@@ -124,7 +124,7 @@ time_t GetUnixStamp();
 
 uint64_t GetMicroSecond();
 
-bool SystemExec(const char *szFormatCmd, ...);
+//bool SystemExec(const char *szFormatCmd, ...);
 
 uint32_t ByteAlign(uint32_t uValue, uint32_t uAlign);
 

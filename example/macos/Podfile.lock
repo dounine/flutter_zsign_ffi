@@ -1,0 +1,29 @@
+PODS:
+  - flutter_zsign_ffi (0.0.1):
+    - FlutterMacOS
+    - OpenSSL-Universal
+  - FlutterMacOS (1.0.0)
+  - OpenSSL-Universal (1.1.2200)
+
+DEPENDENCIES:
+  - flutter_zsign_ffi (from `Flutter/ephemeral/.symlinks/plugins/flutter_zsign_ffi/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+
+SPEC REPOS:
+  trunk:
+    - OpenSSL-Universal
+
+EXTERNAL SOURCES:
+  flutter_zsign_ffi:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_zsign_ffi/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+
+SPEC CHECKSUMS:
+  flutter_zsign_ffi: e0757a66b67ba64e9f0d1be617d161e427bd2c3b
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  OpenSSL-Universal: 6e1ae0555546e604dbc632a2b9a24a9c46c41ef6
+
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+
+COCOAPODS: 1.15.2

@@ -1,0 +1,19 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: FlutterZsignFfiBindings
+description: |
+  Bindings for `src/zsign.h`.
+
+  Regenerate bindings with `dart run ffigen --config ffigen.yaml`.
+output: 'lib/flutter_zsign_ffi_bindings_generated.dart'
+headers:
+  entry-points:
+    - 'src/zsign.h'
+  include-directives:
+    - 'src/zsign.h'
+preamble: |
+  // ignore_for_file: always_specify_types
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+comments:
+  style: any
+  length: full
